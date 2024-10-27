@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-int ft_strlen(char *str);
+extern int ft_strlen(char *str);
 
 int main()
 {
 	// ----- strlen
     
 	char str[] = "hello world";
-    prinf("%d\n", ft_strlen(str);
+    	prinf("The len of %s is %d\n", str,ft_strlen(str);
     
 
 	return 0;
-}
+

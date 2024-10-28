@@ -7,8 +7,7 @@ int main()
 	// ----- strlen
     
 	char str[] = "hello world";
-    	prinf("The len of %s is %d\n", str,ft_strlen(str);
-    
+    	printf("The len of \"%s\" is %d\n", str,ft_strlen(str));
 
 	return 0;
-
+}

@@ -42,3 +42,6 @@ p/d $register
 
 - [instruction reference](https://www.felixcloutier.com/x86/)
 - [cheat sheet](https://www.cs.uaf.edu/2017/fall/cs301/reference/x86_64.html)
+- [assembly language programming with ubuntu](https://github.com/mandm-pt/OperatingSystem/blob/master/literature/x86-64%20Assembly%20Language%20Programming%20with%20Ubuntu.pdf)
+- [debugging assembly code with gdb](https://web.cecs.pdx.edu/~apt/cs510comp/gdb.pdf)
+- [the 64 bit x86 C Calling convention](https://aaronbloomfield.github.io/pdr/book/x86-64bit-ccc-chapter.pdf)

@@ -1,6 +1,6 @@
-ASM_SRC = ft_strlen.s
+ASM_SRC = ft_strlen.s ft_strcpy.s
 C_SRC = main.c
-ASM_OBJ = ft_strlen.o
+ASM_OBJ = $(ASM_SRC:.s=.o)
 C_OBJ = main.o
 OUTPUT = prog
 
@@ -11,8 +11,11 @@ CFLAGS = -c
 
 all: $(OUTPUT)
 
-$(ASM_OBJ): $(ASM_SRC)
-	$(NASM) $(NASMFLAGS) $(ASM_SRC) -o $(ASM_OBJ)
+%.o: %.s
+	$(NASM) $(NASMFLAGS) $< -o $@
+
+#$(ASM_OBJ): $(ASM_SRC)
+#	$(NASM) $(NASMFLAGS) $(ASM_SRC) -o $(ASM_OBJ)
 
 $(C_OBJ): $(C_SRC)
 	$(CC) $(CFLAGS) $(C_SRC)

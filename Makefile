@@ -1,4 +1,4 @@
-ASM_SRC = ft_strlen.s ft_strcpy.s
+ASM_SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s
 C_SRC = main.c
 ASM_OBJ = $(ASM_SRC:.s=.o)
 C_OBJ = main.o

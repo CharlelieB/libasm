@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
+#include <unistd.h>
 
 extern int ft_strlen(char *str);
 extern char *ft_strcpy(char *dest, const char *src);
@@ -77,6 +79,17 @@ int main()
 		size_t n = ft_write(1, str, 11);
 		printf("\n");
 		printf("Print \"%s\", nb of byte written: %ld\n", str, n);
+	
+		printf("\nSimulate write failure - [ASM vs original]\n\n");
+
+		n = ft_write(-1, str, 11);
+		int errcode = errno;
+		perror("");
+		printf("Return value: %ld. Errno code: %d\n", n, errcode);
+		n = write(-1, str, 11);
+		perror("");
+		errcode = errno;
+		printf("Return value: %ld. Errno code: %d\n", n, errcode);
 	}
 	return 0;
 }

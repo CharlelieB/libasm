@@ -7,6 +7,7 @@ extern int ft_strlen(char *str);
 extern char *ft_strcpy(char *dest, const char *src);
 extern int ft_strcmp(const char *s1, const char *s2);
 extern ssize_t ft_write(int fd, const void *buf, size_t count);
+extern ssize_t ft_read(int fd, void *buf, size_t cout);
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -91,5 +92,21 @@ int main()
 		errcode = errno;
 		printf("Return value: %ld. Errno code: %d\n", n, errcode);
 	}
+	// ------ ft_read -----
+
+	printf("\n----FT_READ ----\n\n");
+	{
+		char buf[5];
+		ssize_t n = ft_read(1, buf, 3);
+		buf[n] = 0;
+		printf("Read %ld bytes : %s\n", n, buf);
+	}
+	{
+		char buf[5];
+		ssize_t n = read(1, buf, 3);
+		buf[n] = 0;
+		printf("Read %ld bytes : %s\n", n, buf);
+	}
+
 	return 0;
 }

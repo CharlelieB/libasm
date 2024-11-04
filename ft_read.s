@@ -4,11 +4,11 @@ section .text
 	
 	align 8	
 	
-	global ft_write
+	global ft_read
 	
-	ft_write:
+	ft_read:
 	
-		mov rax, 1 ;sys_write
+		mov rax, 0 ;sys_read
 		mov rbx, rdi
 		mov rcx, rsi
 		;rdx is already set
@@ -16,7 +16,7 @@ section .text
 		cmp rax, -1
 		jg end
 		;set errno
-		mov rbx, rax ;save write return
+		mov rbx, rax
 		call __errno_location wrt ..plt
 		neg rbx ;change sign
 		mov [rax], rbx ;put the return value in errno variable

@@ -2,12 +2,14 @@
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 extern int ft_strlen(char *str);
 extern char *ft_strcpy(char *dest, const char *src);
 extern int ft_strcmp(const char *s1, const char *s2);
 extern ssize_t ft_write(int fd, const void *buf, size_t count);
 extern ssize_t ft_read(int fd, void *buf, size_t cout);
+extern char* ft_strdup(char* buf);
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -93,7 +95,7 @@ int main()
 		printf("Return value: %ld. Errno code: %d\n", n, errcode);
 	}
 	// ------ ft_read -----
-
+	
 	printf("\n----FT_READ ----\n\n");
 	{
 		char buf[5];
@@ -108,5 +110,15 @@ int main()
 		printf("Read %ld bytes : %s\n", n, buf);
 	}
 
+	// ------ ft_stdup -----
+	
+	printf("\n----FT_STRDUP ----\n\n");
+	{
+		char *buf = "hello world";
+		printf("Buf %s : %p\n", buf, buf);
+		char *res = ft_strdup(buf);
+		printf("Copy of %s. Result : %s\n", buf, res);
+		free(res);
+	}
 	return 0;
 }

@@ -1,4 +1,4 @@
-ASM_SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s
+ASM_SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 C_SRC = main.c
 ASM_OBJ = $(ASM_SRC:.s=.o)
 C_OBJ = main.o
@@ -22,6 +22,8 @@ $(C_OBJ): $(C_SRC)
 
 $(OUTPUT): $(ASM_OBJ) $(C_OBJ)
 	$(CC) $(ASM_OBJ) $(C_OBJ) -o $(OUTPUT)
+
+re: clean all
 
 clean:
 	rm -f $(ASM_OBJ) $(C_OBJ) $(OUTPUT)

@@ -115,7 +115,6 @@ int main()
 	printf("\n----FT_STRDUP ----\n\n");
 	{
 		char *buf = "hello world";
-		printf("Buf %s : %p\n", buf, buf);
 		char *res = ft_strdup(buf);
 		printf("Copy of %s. Result : %s\n", buf, res);
 		free(res);

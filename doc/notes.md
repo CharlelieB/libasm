@@ -23,7 +23,7 @@ gcc main.o prog.o -o prog
 gdb ./a.out
 b myfunction
 r
-set disassemble-flavor intel
+set disassembly-flavor intel
 disassemble
 stepi
 ```

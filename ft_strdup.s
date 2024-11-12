@@ -1,6 +1,8 @@
 extern malloc
 extern ft_strlen
 extern ft_strcpy
+extern __errno_location
+
 section .text
 	
 	align 8	
@@ -19,7 +21,10 @@ section .text
 		mov rdi, rax
 		mov rsi, rbx
 		call ft_strcpy
-
-		malloc_failure:
-			ret
 		ret
+		malloc_failure:
+			call __errno_location wrt ..plt
+			neg rbx
+			mov [rax], rbx
+			mov rax, 0
+			ret

@@ -10,6 +10,7 @@ extern int ft_strcmp(const char *s1, const char *s2);
 extern ssize_t ft_write(int fd, const void *buf, size_t count);
 extern ssize_t ft_read(int fd, void *buf, size_t cout);
 extern char* ft_strdup(char* buf);
+extern int ft_isalnum(char c);
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -119,5 +120,29 @@ int main()
 		printf("Copy of %s. Result : %s\n", buf, res);
 		free(res);
 	}
+	// ------- ft_isalnum ------
+
+	printf("\n----FT_ISALNUM----\n\n");
+	{
+		printf("` is alnum : %d\n", ft_isalnum('`'));
+		printf("a is alnum : %d\n", ft_isalnum('a'));
+		printf("o is alnum : %d\n", ft_isalnum('o'));
+		printf("z is alnum : %d\n", ft_isalnum('z'));
+		printf("{ is alnum : %d\n", ft_isalnum('{'));
+		printf("A is alnum : %d\n", ft_isalnum('A'));
+		printf("O is alnum : %d\n", ft_isalnum('O'));
+		printf("Z is alnum : %d\n", ft_isalnum('Z'));
+		printf("[ is alnum : %d\n", ft_isalnum('['));
+		printf("@ is alnum : %d\n", ft_isalnum('@'));
+		printf("0 is alnum : %d\n", ft_isalnum('0'));
+		printf("1 is alnum : %d\n", ft_isalnum('1'));
+		printf("9 is alnum : %d\n", ft_isalnum('9'));
+		printf(": is alnum : %d\n", ft_isalnum(':'));
+		printf("/ is alnum : %d\n", ft_isalnum('/'));
+		printf("! is alnum : %d\n", ft_isalnum('!'));
+	}
+
+
+
 	return 0;
 }

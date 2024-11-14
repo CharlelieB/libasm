@@ -1,4 +1,5 @@
 extern ft_strlen
+extern ft_isalnum
 extern __errno_location
 
 section .text
@@ -28,10 +29,15 @@ section .text
 		#check base format
 
 		push rcx #save rcx on stack
-		mov rax, 0 ;i = 0
+		push rdi #save 1st arg
+		mov r9, 0 ;i = 0
 		start_loop:
-			cmp byte [rsi + rax], 0
+			cmp byte [rsi + r9], 0
 			je end_loop ;exit if equal (zf=0)
+			mov rdi, byte [rsi + r9]
+			call ft_isalnum
+			cmp rax, 0
+			je wrong_base
 			inc rax ;++i
 			dec rcx
 			jmp start_loop

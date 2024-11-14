@@ -54,16 +54,19 @@ bool	nb_is_correct(const char *nb, const char *base, int base_len)
 	return (true);
 }
 
-bool	base_is_correct(const char *base, int base_len)
+bool	base_is_correct(const char *base)
 {
+	static bool chars[256];
 	while (*(base))
 	{
-		if (!ft_isalnum(*base))
-			return (false);
-		if (*(base + 1))
-			if (ft_memchr(base + 1, *base, base_len))
-				return (false);
-		base_len--;
+		//if (!ft_isalnum(*base))
+			//return (false);
+		//if (*(base + 1))
+		//	if (ft_memchr(base + 1, *base, base_len))
+		//		return (false);
+		if (chars[(int)*base] == true)
+			return false;
+		chars[(int)*base] = true;
 		base++;
 	}
 	return (true);
@@ -76,7 +79,7 @@ bool	parsing(const char *nb, const char *base, int *base_len)
 	*base_len = ft_strlen(base);
 	if (*base_len <= 1)
 		return (false);
-	if (!base_is_correct(base, *base_len))
+	if (!base_is_correct(base))
 		return (false);
 	if (!nb_is_correct(nb, base, *base_len))
 		return (false);
@@ -119,7 +122,8 @@ int	ft_atoi_base(const char *nptr, const char *base)
 	return (nb);
 }
 
-int main()
+int main(int argc, char **argv)
 {
-	printf("%d\n", ft_atoi_base("ffffff", "0123456789abcdef"));
+	(void)argc;
+	printf("%d\n", ft_atoi_base(argv[1], argv[2]));
 }

@@ -35,7 +35,6 @@ section .text
 			cmp byte [rsi + r9], 0
 			je end_loop ;exit if equal (zf=0)
 			mov rdi, byte [rsi + r9]
-			call ft_isalnum
 			cmp rax, 0
 			je wrong_base
 			inc rax ;++i

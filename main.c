@@ -98,19 +98,19 @@ int main()
 	}
 	// ------ ft_read -----
 	
-	printf("\n----FT_READ ----\n\n");
-	{
-		char buf[5];
-		ssize_t n = ft_read(1, buf, 3);
-		buf[n] = 0;
-		printf("Read %ld bytes : %s\n", n, buf);
-	}
-	{
-		char buf[5];
-		ssize_t n = read(1, buf, 3);
-		buf[n] = 0;
-		printf("Read %ld bytes : %s\n", n, buf);
-	}
+	// printf("\n----FT_READ ----\n\n");
+	// {
+	// 	char buf[5];
+	// 	ssize_t n = ft_read(1, buf, 3);
+	// 	buf[n] = 0;
+	// 	printf("Read %ld bytes : %s\n", n, buf);
+	// }
+	// {
+	// 	char buf[5];
+	// 	ssize_t n = read(1, buf, 3);
+	// 	buf[n] = 0;
+	// 	printf("Read %ld bytes : %s\n", n, buf);
+	// }
 
 	// ------ ft_stdup -----
 	
@@ -151,7 +151,18 @@ int main()
 		
 		char *nb = "ff";
 		char *base = "0123456789abcdef";
-		printf("Number : %s. Base : %s. Result : %d", nb, base, ft_atoi_base(nb, base));
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+
+		// nb = "1110";
+		// base = "01";
+		// printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		// nb = "ff";
+		// base = "0123456789abcdef";
+		// printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		// nb = "42";
+		// base = "abcdebh";
+		// printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 	}
 	return 0;
 }

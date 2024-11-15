@@ -89,17 +89,16 @@ section .text
 		call get_index
 		mov r8, rax ;save the index
 		mov rdi, r9 ;base len as first arg
-		dec r10
+		dec r10 ;decrement size of nb
 		mov rsi, r10 ;nb len - 1 as sec arg
 		push r8
 		call ft_power
 		pop r8
 		imul r8, rax ;multiply index with power
 		add r11, r8 ; add result to nb
-		dec r10	;decrement size of nb
 		pop rsi
 		pop rdi
-		add rdi, 8 ;advance in nb str
+		inc rdi ;advance in nb str
 		jmp .loop
 		
 	end:

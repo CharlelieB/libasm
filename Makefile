@@ -1,12 +1,12 @@
-ASM_SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s ft_power.s
+ASM_SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s ft_atoi_base.s ft_power.s
 C_SRC = main.c
 ASM_OBJ = $(ASM_SRC:.s=.o)
 C_OBJ = main.o
 OUTPUT = prog
 
 NASM = nasm
-NASMFLAGS = -f elf64
-CC = gcc
+NASMFLAGS = -f elf64 -g -O0
+CC = gcc -g3 -O0
 CFLAGS = -c
 
 all: $(OUTPUT)

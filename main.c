@@ -10,7 +10,8 @@ extern int ft_strcmp(const char *s1, const char *s2);
 extern ssize_t ft_write(int fd, const void *buf, size_t count);
 extern ssize_t ft_read(int fd, void *buf, size_t cout);
 extern char* ft_strdup(char* buf);
-extern int ft_power(int x, unsigned int y);
+extern int ft_power_test(int x, unsigned int y);
+extern int ft_atoi_base(char *nb, char *base);
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -127,18 +128,30 @@ int main()
 	{
 		int x = 2;
 		int y = 2;
-		printf("%d^%d = %d\n", x, y, ft_power(x, y));
+		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
 		x = 424;
 		y = 0;
-		printf("%d^%d = %d\n", x, y, ft_power(x, y));
+		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
 		x = 0;
 		y = 1;
-		printf("%d^%d = %d\n", x, y, ft_power(x, y));
-		x = 2;
-		y = 8;
-		printf("%d^%d = %d\n", x, y, ft_power(x, y));
+		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+		x = 5;
+		y = 2;
+		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+		x = -10;
+		y = 2;
+		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
 
 	}
-
+	printf("\n----FT_ATOI_BASE ----\n\n");
+	{
+		//char *nb = 0;
+		//char *base = 0;
+		//printf("Number : %s. Base : %s. Result : %d", nb, base, ft_atoi_base(nb, base));
+		
+		char *nb = "ff";
+		char *base = "0123456789abcdef";
+		printf("Number : %s. Base : %s. Result : %d", nb, base, ft_atoi_base(nb, base));
+	}
 	return 0;
 }

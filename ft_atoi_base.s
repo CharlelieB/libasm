@@ -1,5 +1,3 @@
-extern ft_strlen
-extern ft_isalnum
 extern __errno_location
 
 section .data

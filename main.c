@@ -149,8 +149,9 @@ int main()
 		//char *base = 0;
 		//printf("Number : %s. Base : %s. Result : %d", nb, base, ft_atoi_base(nb, base));
 		
-		char *nb = "ff";
-		char *base = "0123456789abcdef";
+		char *nb = "1";
+		char *base = "01";
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 

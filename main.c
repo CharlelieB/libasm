@@ -12,6 +12,7 @@ extern ssize_t ft_read(int fd, void *buf, size_t cout);
 extern char* ft_strdup(char* buf);
 extern int ft_power_test(int x, unsigned int y);
 extern int ft_atoi_base(char *nb, char *base);
+extern int my_test();
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -22,6 +23,7 @@ void test_cmp(const char *s1, const char *s2)
 
 int main()
 {
+
 	// ----- strlen -----
 
 	printf("----STRLEN----\n\n");
@@ -123,7 +125,7 @@ int main()
 	}
 
 	// ------ ft_power -----
-
+	/*
 	printf("\n----FT_POWER-----\n\n");
 	{
 		int x = 2;
@@ -141,29 +143,32 @@ int main()
 		x = -10;
 		y = 2;
 		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
-
 	}
+	*/
 	printf("\n----FT_ATOI_BASE ----\n\n");
+	
 	{
 		//char *nb = 0;
 		//char *base = 0;
 		//printf("Number : %s. Base : %s. Result : %d", nb, base, ft_atoi_base(nb, base));
 		
-		char *nb = "1";
-		char *base = "01";
-		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
-		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		char *nb = "FFFF";
+		char *base = "0123456789ABCDEF";
 		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 
-		// nb = "1110";
-		// base = "01";
-		// printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
-		// nb = "ff";
-		// base = "0123456789abcdef";
-		// printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
-		// nb = "42";
-		// base = "abcdebh";
-		// printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		nb = "1110";
+		base = "01";
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		nb = "ff";
+		base = "0123456789abcdef";
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		nb = "42";
+		base = "abcdebh";
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
+		nb = "42";
+		base = "0123456789abcdef";
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 	}
+
 	return 0;
 }

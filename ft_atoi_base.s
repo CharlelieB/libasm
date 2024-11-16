@@ -1,7 +1,8 @@
 extern __errno_location
 
-section .data
-    bool_array db 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00  ;256 bits all set to 0
+section .bss
+	align 8
+    bool_array resb 256 ;256 bytes (2048 bits) all set to 0
 
 section .text
 	
@@ -33,7 +34,9 @@ section .text
 		je end_iterate_base
 		xor rdx, rdx
 		mov dl, byte [rsi + r9] ;set the char in dl to use it as index with rdx
-		cmp byte [rbx + rdx], 1
+		;shr rdx, 3 ;divide rdx by 8 to get the byte index
+		;bt byte [rbx + rdx] e
+		cmp byte [rbx + rdx ], 1
 		je wrong_base
 		mov byte [rbx + rdx], 1
 		inc r9 ;++i
@@ -100,11 +103,22 @@ section .text
 		jmp .loop
 		
 	end:
+		;clean array
+		mov rdi, rbx
+		mov rax, 0
+		mov rcx, 32 ;array is 256 bytes so me must clear 2048 bits (clear 64 bits 32 times)
+		rep stosq ;store rax at addr rdi and repeat rxc times, inc rdi by 8 bytes 
 		mov rax, r11
 		pop rbx
 		ret
 
 	wrong_base:
+		;clean array
+		mov rdi, rbx
+		mov rax, 0
+		mov rcx, 32 ;array is 256 bytes so me must clear 2048 bits (clear 64 bits 32 times)
+		rep stosq ;store rax at addr rdi and repeat rxc times, inc rdi by 8 bytes 
+
 		pop rbx
 		mov rax, 0
 		ret

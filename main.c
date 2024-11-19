@@ -21,6 +21,7 @@ extern int ft_power_test(int x, unsigned int y);
 extern int ft_atoi_base(char *nb, char *base);
 extern int my_test();
 extern void ft_list_push_front(t_list **begin_list, void *data);
+extern int	ft_list_size(t_list *lst);
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -128,7 +129,13 @@ int main()
 	{
 		char *buf = "hello world";
 		char *res = ft_strdup(buf);
-		printf("Copy of %s. Result : %s\n", buf, res);
+		printf("Copy of \"%s\". Result : \"%s\"\n", buf, res);
+		free(res);
+	}
+	{
+		char *buf = "";
+		char *res = ft_strdup(buf);
+		printf("Copy of \"%s\". Result : \"%s\"\n", buf, res);
 		free(res);
 	}
 
@@ -189,12 +196,22 @@ int main()
 			// printf("%p\n", v);
 			// printf("%p\n", v2);
 
+		t_list *head = l;
 		while (l)
 		{
 			printf("%s\n", (char *)(l->data));
 			next = l->next;
 			//free(l);
 			l = next;
+		}
+		printf("\n----FT_LIST_SIZE ----\n\n");
+		printf("%d\n", ft_list_size(head));
+
+		while (head)
+		{
+			next = head->next;
+			free(head);
+			head = next;
 		}
 	}
 	return 0;

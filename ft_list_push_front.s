@@ -31,10 +31,3 @@ section .text
 		mov [rax], rdx
 		mov rax, 0
 		ret
-
-	; t_list	*el;
-
-	; el = malloc(sizeof(t_list));
-	; el->data = data;
-	; el->next = *begin_list;
-	; *begin_list = el; 

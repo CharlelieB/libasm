@@ -4,6 +4,13 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+typedef struct s_list
+{
+void *data;
+struct s_list *next;
+} t_list;
+
+
 extern int ft_strlen(char *str);
 extern char *ft_strcpy(char *dest, const char *src);
 extern int ft_strcmp(const char *s1, const char *s2);
@@ -13,6 +20,7 @@ extern char* ft_strdup(char* buf);
 extern int ft_power_test(int x, unsigned int y);
 extern int ft_atoi_base(char *nb, char *base);
 extern int my_test();
+extern void ft_list_push_front(t_list **begin_list, void *data);
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -170,5 +178,24 @@ int main()
 		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 	}
 
+	printf("\n----FT_LIST_PUSH_FRONT ----\n\n");
+	{
+		t_list *l = NULL, *next;
+
+		char *v = "el1"; 
+		ft_list_push_front(&l, v);
+		char *v2 = "el2";
+		ft_list_push_front(&l, v2);
+			// printf("%p\n", v);
+			// printf("%p\n", v2);
+
+		while (l)
+		{
+			printf("%s\n", (char *)(l->data));
+			next = l->next;
+			//free(l);
+			l = next;
+		}
+	}
 	return 0;
 }

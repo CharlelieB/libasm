@@ -20,18 +20,14 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int	ft_strcmp_nb(const int *s1, const int *s2)
+int	ft_cmp_nb(const int *s1, const int *s2)
 {
-	while ((*s1 || *s2))
+	if (*s1 && *s2)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
+		return (*s1 - *s2);
 	}
 	return (0);
 }
-
 
 void ft_list_push_front(t_list **begin_list, void *data)
 {
@@ -136,7 +132,7 @@ int main()
 		tmp = next;
 	}
 
-    ft_list_sort(&l, ft_strcmp_nb);
+    ft_list_sort(&l, ft_cmp_nb);
     tmp = l;
     printf("\n[Sorted list]\n\n");
 

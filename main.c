@@ -22,6 +22,17 @@ extern int ft_atoi_base(char *nb, char *base);
 extern int my_test();
 extern void ft_list_push_front(t_list **begin_list, void *data);
 extern int	ft_list_size(t_list *lst);
+extern void ft_list_sort(t_list **begin_list, int (*cmp)());
+extern int	ft_cmp_nb(const int *s1, const int *s2);
+
+// int	ft_cmp_nb(const int *s1, const int *s2)
+// {
+// 	if (s1 && s2)
+// 	{
+// 		return (*s1 - *s2);
+// 	}
+// 	return (0);
+// }
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -214,5 +225,85 @@ int main()
 			head = next;
 		}
 	}
+
+	printf("\n----FT_LIST_SORT ----\n\n");
+
+ 	{
+		t_list *l = NULL, *next;
+		char *strs[5];
+	
+		strs[0] = "bee";
+		strs[1] = "spider";
+		strs[2] = "elephant";
+		strs[3] = "tiger";
+		strs[4] = "cat";
+
+		ft_list_push_front(&l, strs[0]);
+		ft_list_push_front(&l, strs[1]);
+		ft_list_push_front(&l, strs[2]);
+		ft_list_push_front(&l, strs[3]);
+		ft_list_push_front(&l, strs[4]);
+
+		t_list *tmp = l;
+		printf("[Unsorted list]\n\n");
+		while (tmp)
+		{
+			printf("%s\n", (char *)(tmp->data));
+			next = tmp->next;
+			tmp = next;
+		}
+
+		ft_list_sort(&l, ft_strcmp);
+		tmp = l;
+		printf("\n[Sorted list]\n\n");
+
+		while (tmp)
+		{
+			printf("%s\n", (char *)(tmp->data));
+			next = tmp->next;
+			free(tmp);
+			tmp = next;
+		}
+	}
+
+		//LST INT
+	{
+		t_list *l = NULL, *next;
+		int strs[5];
+		
+		strs[0] = 5;
+		strs[1] = 9;
+		strs[2] = -5;
+		strs[3] = 100;
+		strs[4] = 42;
+
+		ft_list_push_front(&l, &strs[0]);
+		ft_list_push_front(&l, &strs[1]);
+		ft_list_push_front(&l, &strs[2]);
+		ft_list_push_front(&l, &strs[3]);
+		ft_list_push_front(&l, &strs[4]);
+
+		t_list *tmp = l;
+		printf("\n[Unsorted list]\n\n");
+		while (tmp)
+		{
+			printf("%d\n", *(int *)(tmp->data));
+			next = tmp->next;
+			tmp = next;
+		}
+
+		ft_list_sort(&l, ft_cmp_nb);
+		tmp = l;
+		printf("\n[Sorted list]\n\n");
+
+		while (tmp)
+		{
+			printf("%d\n", *(int *)(tmp->data));
+			next = tmp->next;
+			free(tmp);
+			tmp = next;
+		}
+    }
+
 	return 0;
 }

@@ -15,7 +15,9 @@ section .text
 	;base_len -> r9
 	;nb_len ->r10
 	push rbx
-		
+	
+	lea rbx, [rel bool_array]
+
 	;PARSING
 	;check if ptr are null
 	cmp rdi, 0
@@ -26,8 +28,6 @@ section .text
 	;check base format
 
 	mov r9, 0 ;i = 0
-
-	lea rbx, [rel bool_array]
 	
 	iterate_base:
 		cmp byte [rsi + r9], 0

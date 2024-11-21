@@ -9,6 +9,8 @@ section .text
 
 	ft_list_push_front:
     
+    cmp rdi, 0
+    je end
     push rdi
     push rsi
     mov rdi, 16 ;struct is 16 bytes
@@ -23,6 +25,7 @@ section .text
     mov [rax + 8], rcx
     mov [rdi], rax
 
+    end:
     ret
     malloc_failure:
     	mov rdx, rax

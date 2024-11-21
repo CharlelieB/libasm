@@ -125,19 +125,19 @@ int main()
 	}
 	// ------ ft_read -----
 	
-	// printf("\n----FT_READ ----\n\n");
-	// {
-	// 	char buf[5];
-	// 	ssize_t n = ft_read(1, buf, 3);
-	// 	buf[n] = 0;
-	// 	printf("Read %ld bytes : %s\n", n, buf);
-	// }
-	// {
-	// 	char buf[5];
-	// 	ssize_t n = read(1, buf, 3);
-	// 	buf[n] = 0;
-	// 	printf("Read %ld bytes : %s\n", n, buf);
-	// }
+	printf("\n----FT_READ ----\n\n");
+	{
+		char buf[1000];
+		ssize_t n = ft_read(1, buf, 1000);
+		buf[n] = 0;
+		printf("Read %ld bytes : %s\n", n, buf);
+	}
+	{
+		char buf[1000];
+		ssize_t n = read(1, buf, 1000);
+		buf[n] = 0;
+		printf("Read %ld bytes : %s\n", n, buf);
+	}
 
 	// ------ ft_stdup -----
 	
@@ -156,35 +156,35 @@ int main()
 	}
 
 	// ------ ft_power -----
-	/*
-	printf("\n----FT_POWER-----\n\n");
-	{
-		int x = 2;
-		int y = 2;
-		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
-		x = 424;
-		y = 0;
-		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
-		x = 0;
-		y = 1;
-		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
-		x = 5;
-		y = 2;
-		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
-		x = -10;
-		y = 2;
-		printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
-	}
-	*/
+
+	// printf("\n----FT_POWER-----\n\n");
+	// {
+	// 	int x = 2;
+	// 	int y = 2;
+	// 	printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+	// 	x = 424;
+	// 	y = 0;
+	// 	printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+	// 	x = 0;
+	// 	y = 1;
+	// 	printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+	// 	x = 5;
+	// 	y = 2;
+	// 	printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+	// 	x = -10;
+	// 	y = 2;
+	// 	printf("%d^%d = %d\n", x, y, ft_power_test(x, y));
+	// }
+
 	printf("\n----FT_ATOI_BASE ----\n\n");
 	
 	{
-		//char *nb = 0;
-		//char *base = 0;
-		//printf("Number : %s. Base : %s. Result : %d", nb, base, ft_atoi_base(nb, base));
+		char *nb = 0;
+		char *base = 0;
+		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 		
-		char *nb = "FFFF";
-		char *base = "0123456789ABCDEF";
+		nb = "FFFF";
+		base = "0123456789ABCDEF";
 		printf("Number : %s. Base : %s. Result : %d\n", nb, base, ft_atoi_base(nb, base));
 
 		nb = "1110";
@@ -209,8 +209,6 @@ int main()
 		ft_list_push_front(&l, v);
 		char *v2 = "el2";
 		ft_list_push_front(&l, v2);
-			// printf("%p\n", v);
-			// printf("%p\n", v2);
 
 		t_list *head = l;
 		while (l)
@@ -364,7 +362,9 @@ int main()
 			tmp = tmp->next;
 		}
 	}
-
+	{
+		ft_list_push_front(NULL, NULL);
+	}
 
 	return 0;
 }

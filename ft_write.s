@@ -8,18 +8,17 @@ section .text
 	
 	ft_write:
 	
+		push rbx
 		mov rax, 1 ;sys_write
-		mov rdx, rdi
-		mov rcx, rsi
-		;rdx is already set
 		syscall
 		cmp rax, -1
 		jg end
 		;set errno
-		mov rdx, rax ;save write return
+		mov rbx, rax ;save write return
 		call __errno_location wrt ..plt
-		neg rdx ;change sign
-		mov [rax], rdx ;put the return value in errno variable
+		neg rbx ;change sign
+		mov [rax], rbx ;put the return value in errno variable
 		mov rax, -1
 	end:
+		pop rbx
 		ret

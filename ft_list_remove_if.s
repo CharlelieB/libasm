@@ -14,7 +14,7 @@ section .text
 	je end
 	cmp rdx, 0 ;if cpm funct is null
 	je end
-    cmp rcx, 0;if del funct is null
+    cmp rcx, 0 ;if del funct is null
     je end
 
     push rbx
@@ -28,24 +28,47 @@ section .text
     mov r14, rcx ;save del ft
 
     mov rbx, [rdi] ;tmp = *begin_list
-    
+    mov r9, 0 ;prev = 0
+    mov r10, rdi ;save **begin_list to update head if needed 
+
     loop:
         cmp rbx, 0 ;if tmp = 0
         je end_loop
 
         mov rdi, [rbx] ;put tmp->data in arg
 		mov rsi, r12 ;put data_ref in snd arg
+        
+        push r9
+        push r10
 		call r13 ;call cmp
-        cdqe ;signed extend eax result to rax
-		cmp rax, 0
+        cdqe ;signed extend eax result to rax    
+        pop r10
+        pop r9
+        cmp rax, 0
         jne list_advance ;if cmp return != 0, don't delete
-        call r14 ;call del ft (tmp->data already in rdi)
+        mov rdi, [rbx] ;put tmp->data in arg
+        push r9
+        push r10
+        call r14 ;call del ft
+        pop r10
+        pop r9
         mov r15, [rbx + 8] ;next = tmp->next
         mov rdi, rbx
+        push r9
+        push r10
         call free wrt ..plt
+        pop r10
+        pop r9
         mov rbx, r15 ;tmp = next
+        cmp r9, 0
+        je update_head ;if prev = NULL, we must update the head of the list
+        mov [r9 + 8], rbx ; prev->next = tmp (update the next of prev)
+        jmp loop
+        update_head:
+        mov [r10], rbx ; *begin_list = tmp
         jmp loop
         list_advance:
+        mov r9, rbx ; prev = tmp 
         mov r8, [rbx + 8] ;tmp->next
 		mov rbx, r8 ;tmp = tmp->next 
         jmp loop

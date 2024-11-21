@@ -37,6 +37,7 @@ section .text
 		call rbx ;call cmp
 		; pop rsi
 		; pop rdi
+		cdqe
 		cmp rax, 0
 		jle list_advance ;if cmp return <= 0, no sorting
 		;sort

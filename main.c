@@ -23,16 +23,16 @@ extern int my_test();
 extern void ft_list_push_front(t_list **begin_list, void *data);
 extern int	ft_list_size(t_list *lst);
 extern void ft_list_sort(t_list **begin_list, int (*cmp)());
-extern int	ft_cmp_nb(const int *s1, const int *s2);
+//extern int	ft_cmp_nb(const int *s1, const int *s2);
 
-// int	ft_cmp_nb(const int *s1, const int *s2)
-// {
-// 	if (s1 && s2)
-// 	{
-// 		return (*s1 - *s2);
-// 	}
-// 	return (0);
-// }
+int	ft_cmp_nb(const int *s1, const int *s2)
+{
+	if (s1 && s2)
+	{
+		return (*s1 - *s2);
+	}
+	return (0);
+}
 
 void test_cmp(const char *s1, const char *s2)
 {
@@ -273,7 +273,7 @@ int main()
 		
 		strs[0] = 5;
 		strs[1] = 9;
-		strs[2] = -5;
+		strs[2] = -5000;
 		strs[3] = 100;
 		strs[4] = 42;
 
@@ -304,6 +304,7 @@ int main()
 			tmp = next;
 		}
     }
+
 
 	return 0;
 }

@@ -116,19 +116,19 @@ int main()
 		t_list *l = NULL, *next;
 		char *strs[5];
 	
-		strs[0] = malloc(sizeof(char) * ft_strlen("bee"));
+		strs[0] = malloc(sizeof(char) * (ft_strlen("bee") + 1));
 		ft_strcpy(strs[0], "bee");
 
-		strs[1] = malloc(sizeof(char) * ft_strlen("spider"));
+		strs[1] = malloc(sizeof(char) * (ft_strlen("spider") + 1));
 		ft_strcpy(strs[1], "spider");
 		
-		strs[2] = malloc(sizeof(char) * ft_strlen("elephant"));
+		strs[2] = malloc(sizeof(char) * (ft_strlen("elephant") + 1));
 		ft_strcpy(strs[2], "elephant");
 
-		strs[3] = malloc(sizeof(char) * ft_strlen("tiger"));
+		strs[3] = malloc(sizeof(char) * (ft_strlen("tiger") + 1));
 		ft_strcpy(strs[3], "tiger");
 		
-		strs[4] = malloc(sizeof(char) * ft_strlen("cat"));
+		strs[4] = malloc(sizeof(char) * (ft_strlen("cat") + 1));
 		ft_strcpy(strs[4], "cat");
 
 		// strs[0] = "bee";
